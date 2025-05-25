@@ -19,3 +19,13 @@ node_modules/
 
 # Environment files
 .env
+
+# Ignore Java build outputs
+user-service/target/
+
+budget-service/target/
+
+budget-service/*.tar
+
+# Ignore generated tar archives
+user-service/*.tar
