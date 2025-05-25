@@ -1,6 +1,6 @@
 spring:
   datasource:
-    url: jdbc:oracle:thin:@budgetdb_medium?TNS_ADMIN=/Users/amirakupov/Desktop/projects/budgetwise/user-service/Wallet
+    url: jdbc:oracle:thin:@budgetdb_medium?TNS_ADMIN=/Users/amirakupov/Desktop/projects/budgetwise/user-service/wallet
     username: ADMIN
     password: Blablabla1234
     driver-class-name: oracle.jdbc.OracleDriver

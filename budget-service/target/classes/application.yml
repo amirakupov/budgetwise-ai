@@ -1,0 +1,15 @@
+spring:
+  datasource:
+    url: jdbc:oracle:thin:@budgetdb_medium?TNS_ADMIN=/Users/amirakupov/Desktop/projects/budgetwise/user-service/wallet
+    username: ADMIN
+    password: Blablabla1234
+  jpa:
+    hibernate:
+      ddl-auto: update
+    show-sql: true
+
+user-service:
+  base-url: http://user-service.default.svc.cluster.local/api
+
+server:
+  port: 8081

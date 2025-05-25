@@ -13,4 +13,3 @@ COPY wallet ./wallet
 
 EXPOSE 8080
 ENTRYPOINT ["java","-jar","./app.jar"]
-

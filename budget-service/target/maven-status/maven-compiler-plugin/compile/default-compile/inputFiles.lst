@@ -1,0 +1,11 @@
+/Users/amirakupov/Desktop/projects/budgetwise/budget-service/src/main/java/com/budgetwise/budgetservice/BudgetServiceApplication.java
+/Users/amirakupov/Desktop/projects/budgetwise/budget-service/src/main/java/com/budgetwise/budgetservice/config/SecurityConfig.java
+/Users/amirakupov/Desktop/projects/budgetwise/budget-service/src/main/java/com/budgetwise/budgetservice/config/WebClientConfig.java
+/Users/amirakupov/Desktop/projects/budgetwise/budget-service/src/main/java/com/budgetwise/budgetservice/controller/BudgetController.java
+/Users/amirakupov/Desktop/projects/budgetwise/budget-service/src/main/java/com/budgetwise/budgetservice/domain/Budget.java
+/Users/amirakupov/Desktop/projects/budgetwise/budget-service/src/main/java/com/budgetwise/budgetservice/domain/Transaction.java
+/Users/amirakupov/Desktop/projects/budgetwise/budget-service/src/main/java/com/budgetwise/budgetservice/dto/BudgetRequest.java
+/Users/amirakupov/Desktop/projects/budgetwise/budget-service/src/main/java/com/budgetwise/budgetservice/dto/TransactionRequest.java
+/Users/amirakupov/Desktop/projects/budgetwise/budget-service/src/main/java/com/budgetwise/budgetservice/repository/BudgetRepository.java
+/Users/amirakupov/Desktop/projects/budgetwise/budget-service/src/main/java/com/budgetwise/budgetservice/repository/TransactionRepository.java
+/Users/amirakupov/Desktop/projects/budgetwise/budget-service/src/main/java/com/budgetwise/budgetservice/service/BudgetService.java

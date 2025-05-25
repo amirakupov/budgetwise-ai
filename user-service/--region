@@ -1,0 +1,5 @@
+Usage: oci artifacts container [OPTIONS] COMMAND [ARGS]...
+
+Error: No such command 'namespace'.
+
+For OCI CLI commands and parameters suggestion, auto completion and other useful features, try the Interactive mode by typing `oci -i`.

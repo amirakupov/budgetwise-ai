@@ -8,7 +8,9 @@
 
   <modules>
     <!-- child modules will go here -->
+    <module>common-api</module>
     <module>user-service</module>
+    <module>budget-service</module>
   </modules>
 
   <dependencyManagement>

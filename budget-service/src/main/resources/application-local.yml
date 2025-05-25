@@ -1,0 +1,32 @@
+spring:
+  config:
+    activate:
+      on-profile: local
+
+  datasource:
+    type: com.zaxxer.hikari.HikariDataSource
+    url: jdbc:postgresql://localhost:5433/budgetwise
+    username: postgres
+    password: postgres
+    driver-class-name: org.postgresql.Driver
+
+  jpa:
+    database-platform: org.hibernate.dialect.PostgreSQLDialect
+    hibernate:
+      ddl-auto: update
+    show-sql: true
+  security:
+    oauth2:
+      resourceserver:
+        jwt:
+          jwk-set-uri: ${user-service.base-url}/.well-known/jwks.json
+
+jwt:
+  secret: Rc5k5SMMiXkCcegp9kfGGP6aHAuFTEdbTON+0fxK8Dk=
+
+
+user-service:
+  base-url: http://localhost:8080/api
+
+server:
+  port: 8081
