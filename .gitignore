@@ -25,7 +25,7 @@ user-service/target/
 
 budget-service/target/
 
-budget-service/*.tar
+budget-service/budget-service.tar
 
 # Ignore generated tar archives
-user-service/*.tar
+user-service/user-service.tar
