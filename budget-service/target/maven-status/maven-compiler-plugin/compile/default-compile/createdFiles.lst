@@ -1,1 +1,11 @@
+com/budgetwise/budgetservice/service/BudgetService.class
+com/budgetwise/budgetservice/config/WebClientConfig.class
+com/budgetwise/budgetservice/dto/BudgetRequest.class
+com/budgetwise/budgetservice/repository/TransactionRepository.class
+com/budgetwise/budgetservice/config/SecurityConfig.class
+com/budgetwise/budgetservice/dto/TransactionRequest.class
 com/budgetwise/budgetservice/BudgetServiceApplication.class
+com/budgetwise/budgetservice/domain/Transaction.class
+com/budgetwise/budgetservice/repository/BudgetRepository.class
+com/budgetwise/budgetservice/controller/BudgetController.class
+com/budgetwise/budgetservice/domain/Budget.class

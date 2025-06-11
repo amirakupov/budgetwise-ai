@@ -12,8 +12,8 @@
     <artifactId>budget-service</artifactId>
 
     <properties>
-        <maven.compiler.source>23</maven.compiler.source>
-        <maven.compiler.target>23</maven.compiler.target>
+        <maven.compiler.source>17</maven.compiler.source>
+        <maven.compiler.target>17</maven.compiler.target>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
     </properties>
     <dependencies>
@@ -32,6 +32,16 @@
             <groupId>com.oracle.database.jdbc</groupId>
             <artifactId>ojdbc11</artifactId>
             <version>21.9.0.0</version>
+        </dependency>
+        <dependency>
+            <groupId>com.oracle.database.spring</groupId>
+            <artifactId>oracle-spring-boot-starter-ucp</artifactId>
+            <version>24.4.0</version>
+        </dependency>
+        <dependency>
+            <groupId>com.oracle.database.spring</groupId>
+            <artifactId>oracle-spring-boot-starter-wallet</artifactId>
+            <version>24.4.0</version>
         </dependency>
         <!-- For calling User-Service -->
         <dependency>
@@ -83,5 +93,22 @@
 
 
     </dependencies>
+    <build>
+        <plugins>
+            <!-- Spring Boot plugin: packages a runnable “fat” JAR -->
+            <plugin>
+                <groupId>org.springframework.boot</groupId>
+                <artifactId>spring-boot-maven-plugin</artifactId>
+                <executions>
+                    <execution>
+                        <goals>
+                            <goal>repackage</goal>
+                        </goals>
+                    </execution>
+                </executions>
+            </plugin>
+        </plugins>
+    </build>
+
 
 </project>

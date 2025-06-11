@@ -3,10 +3,21 @@ spring:
     url: jdbc:oracle:thin:@budgetdb_medium?TNS_ADMIN=/Users/amirakupov/Desktop/projects/budgetwise/user-service/wallet
     username: ADMIN
     password: Blablabla1234
+    driver-class-name: oracle.jdbc.OracleDriver
+    oracle:
+      ucp:
+        connection-factory-class-name: oracle.jdbc.pool.OracleDataSource
+        connection-pool-name: budgetwiseUCP
+        initial-pool-size: 1
+        min-pool-size: 1
+        max-pool-size: 5
   jpa:
     hibernate:
       ddl-auto: update
     show-sql: true
+
+jwt:
+  secret: Rc5k5SMMiXkCcegp9kfGGP6aHAuFTEdbTON+0fxK8Dk=
 
 user-service:
   base-url: http://user-service.default.svc.cluster.local/api

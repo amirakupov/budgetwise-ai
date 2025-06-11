@@ -31,15 +31,14 @@ public class BudgetController {
 
     @PostMapping("/{id}/transactions")
     public Transaction txn(
-            @PathVariable("id") Long id,
+            @PathVariable Long id,
             @RequestBody TransactionRequest req
     ) {
         return service.addTransaction(id, req);
     }
 
     @GetMapping("/{id}/transactions")
-    public List<Transaction> txns(
-            @PathVariable("id") Long id) {
+    public List<Transaction> txns(@PathVariable Long id) {
         return service.listTransactions(id);
     }
 }
