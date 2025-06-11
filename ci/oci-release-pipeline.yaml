@@ -1,0 +1,103 @@
+# ci/oci-release-pipeline.yaml
+# OCI DevOps Release Pipeline (YAML syntax)
+
+# 1. Define the pipeline metadata
+pipeline:
+  displayName: OKE-E2E-Release
+  description: Build, deploy to OKE, and smoke-test user+budget services
+
+# 2. Artifacts (the Git repo itself)
+artifacts:
+  - name: source
+    type: GIT
+    # set this up in DevOps console to point at your Git repo
+
+# 3. Environments (your OKE cluster)
+environments:
+  - name: oke-cluster
+    type: KUBERNETES_CLUSTER
+    # configure this in the DevOps console with your OKE connection
+
+# 4. Stages
+stages:
+  # ─── Build & Push Images ─────────────────────────────────────────────────────
+  - stage:
+      name: BuildAndPush
+      displayName: Build & Push Docker Images
+      jobs:
+        - job:
+            name: BuildUserSvc
+            displayName: Build & Push user-service
+            steps:
+              # Use Docker Buildx to push multi-arch to Docker Hub
+              - type: SHELL
+                name: Build-and-Push-User-Service
+                spec:
+                  image: docker:24
+                  commands:
+                    - docker buildx create --use
+                    - cd user-service
+                    - docker buildx build \
+                      --platform linux/amd64,linux/arm64 \
+                      -t amirkukei/user-service:1.0 \
+                      --push .
+        - job:
+            name: BuildBudgetSvc
+            displayName: Build & Push budget-service
+            steps:
+              - type: SHELL
+                name: Build-and-Push-Budget-Service
+                spec:
+                  image: docker:24
+                  commands:
+                    - docker buildx create --use
+                    - cd ..
+                    - docker buildx build \
+                      --platform linux/amd64,linux/arm64 \
+                      -f Dockerfile.budget \
+                      -t amirkukei/budget-service:1.0 \
+                      --push .
+
+  # ─── Deploy to OKE ────────────────────────────────────────────────────────────
+  - stage:
+      name: DeployToOKE
+      displayName: Deploy to OKE Cluster
+      environment: oke-cluster
+      jobs:
+        - job:
+            name: KubeApply
+            displayName: kubectl apply manifests
+            steps:
+              - type: KUBERNETES
+                name: Apply-Deployments
+                spec:
+                  action: APPLY
+                  manifests:
+                    - user-service-deployment.yaml
+                    - user-service-lb.yaml
+                    - budget-service-deployment.yaml
+                    - budget-service-lb.yaml
+
+  # ─── E2E Smoke-Test ────────────────────────────────────────────────────────────
+  - stage:
+      name: SmokeTest
+      displayName: Run Postman/Newman E2E Smoke Tests
+      jobs:
+        - job:
+            name: NewmanTest
+            displayName: Newman E2E Tests
+            steps:
+              - type: SHELL
+                name: Install-Newman
+                spec:
+                  image: node:18
+                  commands:
+                    - npm install -g newman
+              - type: SHELL
+                name: Run-Smoke-Tests
+                spec:
+                  image: node:18
+                  commands:
+                    - newman run ci/oke-e2e.postman_collection.json \
+                      --env-var "BASE_URL=http://138.2.155.24" \
+                      --bail
